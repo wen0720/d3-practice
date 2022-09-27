@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scale</title>
+  <style>
+    .box {
+      margin: 100px 0;
+      border: 1px solid #eee;
+      border-width: 1px 0 1px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="box test1">
+    <h1>scaleSqrt</h1>
+    <svg width="800" height="150">
+      <g transform="translate(50, 50)"></g>
+    </svg>
+  </div>
+  <div class="box test2">
+    <h1>scaleLog</h1>
+    <svg width="900" height="150">
+      <g transform="translate(50, 50)"></g>
+    </svg>
+  </div>
+  <div class="box test3">
+    <h1>scaleTime</h1>
+    <svg width="900" height="150">
+      <g transform="translate(50, 50)"></g>
+    </svg>
+  </div>
+  <div class="box test4">
+    <h1>scaleSequential</h1>
+    <svg width="700" height="580">
+      <g id="wrapper" transform="translate(40, 40)"></g>
+    </svg>
+  </div>
+  <div class="box test5">
+    <h1>multiple segments</h1>
+    <svg width="700" height="100">
+      <g transform="translate(40, 40)"></g>
+    </svg>
+  </div>
+  <script type="module" src="js/scale.js"></script>
+</body>
+</html>

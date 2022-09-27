@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shape</title>
+  <style>
+    .box {
+      margin: 100px 0;
+      border: 1px solid #eee;
+      border-width: 1px 0 1px 0;
+    }
+    path {
+      fill: none;
+      stroke: #ddd;
+    }
+    .test6 path {
+      fill: purple;
+    }
+    .test7 path {
+      fill: yellow;
+    }
+    .test8 path {
+      fill: rgb(0, 255, 123);
+      stroke: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="box test1">
+    <h1>基本折線圖</h1>
+    <svg width="800" height="150">
+      <path></path>
+    </svg>
+  </div>
+  <div class="box test2">
+    <h1>.x(), .y()</h1>
+    <svg width="800" height="150">
+      <path></path>
+    </svg>
+  </div>
+  <div class="box test3">
+    <h1>.defined()</h1>
+    <svg width="800" height="150">
+      <path></path>
+    </svg>
+  </div>
+  <div class="box test4">
+    <h1>.curve()</h1>
+    <svg width="800" height="200">
+      <g transform="translate(0, 20)">
+        <path></path>
+      </g>
+    </svg>
+  </div>
+  <div class="box test5">
+    <h1>雷達圖</h1>
+    <svg width="500" height="500">
+      <g transform="translate(250, 250)">
+        <path></path>
+      </g>
+    </svg>
+  </div>
+  <div class="box test6">
+    <h1>Area Genrator</h1>
+    <svg width="800" height="150">
+      <path></path>
+    </svg>
+  </div>
+  <div class="box test7">
+    <h1>Area Generator 2 line</h1>
+    <svg width="800" height="150">
+      <path></path>
+    </svg>
+  </div>
+  <div class="box test8">
+    <h1>Radial Area</h1>
+    <svg width="700" height="200">
+      <g transform="translate(100, 100)">
+        <path></path>
+      </g>
+    </svg>
+  </div>
+  <div class="box test9">
+    <h1>stack</h1>
+    <svg class="bar" width="800" height="200"></svg>
+    <svg class="area" width="800" height="200"></svg>
+  </div>
+  <div class="box test10">
+    <h1>Arc generator</h1>
+    <svg class="arc" width="800" height="200">
+      <g transform="translate(100, 100)"></g>
+    </svg>
+  </div>
+  <div class="box test11">
+    <h1>.centroid() 尋找質心</h1>
+    <svg class="arc" width="800" height="200">
+      <g transform="translate(100, 100)"></g>
+    </svg>
+  </div>
+  <div class="box test12">
+    <h1>pie()</h1>
+    <svg class="pie" width="800" height="200">
+      <g transform="translate(100, 100)"></g>
+    </svg>
+    <svg class="pie2" width="800" height="200">
+      <g transform="translate(100, 100)"></g>
+    </svg>
+  </div>
+  <script type="module" src="js/shape.js"></script>
+</body>
+</html>

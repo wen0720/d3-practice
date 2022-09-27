@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transition</title>
+  <style>
+    .box {
+      margin: 100px 0;
+      border: 1px solid #eee;
+      border-width: 1px 0 1px 0;
+    }
+    .test1 button {
+      margin: 30px 0 0;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <div class="box test1">
+      <svg width="800" height="150">
+        <g transform="translate(75, 75)"></g>
+      </svg>
+      <button onclick="updatetest1()">再次更新</button>
+    </div>
+    <div class="box test2">
+      <h1>duration</h1>
+      <svg width="800" height="150">
+        <g transform="translate(75, 75)"></g>
+      </svg>
+      <button onclick="updatetest2()">再次更新</button>
+    </div>
+    <div class="box test3">
+      <h1>delay</h1>
+      <svg width="800" height="150">
+        <g transform="translate(75, 75)"></g>
+      </svg>
+      <button onclick="updatetest3()">再次更新</button>
+    </div>
+    <div class="box test4">
+      <h1>easing Function</h1>
+      <svg width="800" height="150">
+        <g transform="translate(75, 75)"></g>
+      </svg>
+      <button onclick="updatetest4()">再次更新</button>
+    </div>
+    <div class="box test5">
+      <h1>chained transitions</h1>
+      <svg width="800" height="150">
+        <g transform="translate(75, 75)"></g>
+      </svg>
+      <button onclick="updatetest5()">再次更新</button>
+    </div>
+    <div class="box test6">
+      <h1>.tween()</h1>
+      <svg width="600" height="600">
+          <g class="c-group" transform="translate(300, 300)">
+            <circle r="100" stroke="#ddd" fill="none"></circle>
+          </g>
+      </svg>
+      <button onclick="updatetest6()">再次更新</button>
+    </div>
+    <div class="box test7">
+      <h1>enter, update, exit</h1>
+      <svg width="800" height="150">
+          <g transform="translate(75, 75)"></g>
+      </svg>
+      <button onclick="updatetest7()">再次更新</button>
+    </div>
+  </div>
+  <script type="module" src="js/transition.js"></script>
+</body>
+</html>
