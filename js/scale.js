@@ -183,3 +183,168 @@ d3 有 12 種 scale function，大致上可以分成 3 種類型
   console.log(colorData);
 }
 //======== multiple segments ========//
+
+//======== inversion ========//
+{
+  const linearScale = d3.scaleLinear().domain([0, 10]).range([0, 100]);
+  console.log(linearScale.invert(50));
+  console.log(linearScale.invert(100)); // 用 invert 可以從 range 反查回 domain
+}
+//======== inversion ========//
+
+
+/*
+*
+*
+*
+第 2 種
+【input 連續的值，output 離散的值】
+*
+*
+*
+*/
+
+//======== scaleQuantize ========//
+/**
+因為輸出的是離散的值，所以在下面例子當中，
+0 <= x < 25 都會是 lightblue
+25 <= x < 50 都會是 orange
+50 <= x < 75 都會是 lightgreen
+75 <= x < 100 都會是 pink
+*/
+{
+  const quantizeScale = d3.scaleQuantize().domain([0, 100]).range(['lightblue', 'orange', 'lightgreen', 'pink'])
+  const xScale = d3.scaleLinear().domain([0, 100]).range([0, 600])
+  const data = d3.range(0, 102, 2);
+  d3.select('.test6 svg g')
+    .selectAll('rect')
+    .data(data)
+    .join('rect')
+    .attr('x', xScale)
+    .attr('width', 6)
+    .attr('height', 20)
+    .attr('fill', quantizeScale)
+}
+//======== scaleQuantize ========//
+
+
+//======== scaleQuantile ========//
+/**
+scaleQuantile 的 .domain 要帶入一個數組，然後會以數組的數量做分組
+如下案例：
+0, 5, 7, 10, 20（前5個）是 lightblue
+30, 35, 40, 60, 62（中間5個）是 orange
+65, 70, 80, 90, 100（後5個）是 lightgreen
+*/
+{
+  const myData = [0, 5, 7, 10, 20, 30, 35, 40, 60, 62, 65, 70, 80, 90, 100];
+  const quantileScale = d3.scaleQuantile()
+    .domain(myData)
+    .range(['lightblue', 'orange', 'lightgreen'])
+  const xScale = d3.scaleLinear()
+    .domain([0, 100])
+    .range([0, 600])
+  d3.select('.test7 svg g')
+    .selectAll('circle')
+    .data(myData)
+    .join('circle')
+    .attr('r', 4)
+    .attr('cx', xScale)
+    .attr('fill', quantileScale)
+
+  console.log(quantileScale.quantiles()) // 這個會帶出分割點
+}
+//======== scaleQuantile ========//
+
+
+//======== scaleThreshold ========//
+{
+  const xScale = d3.scaleLinear()
+    .domain([-10, 110])
+    .range([0, 600])
+  const thresholdScale = d3.scaleThreshold()
+    .domain([0, 50, 100])  // 可以透過 domain 給的值去控制分割的比例，現在這樣是指 lightblue 一半，orange 一半
+    .range(['#ccc', 'lightblue', 'orange', '#ccc'])
+  const myData = d3.range(-10, 110, 2);
+
+  d3.select('.test8 svg g')
+    .selectAll('rect')
+    .data(myData)
+    .join('rect')
+    .attr('x', xScale)
+    .attr('width', 9)
+    .attr('height', 20)
+    .attr('fill', thresholdScale)
+}
+//======== scaleThreshold ========//
+
+
+
+/*
+*
+*
+*
+第 3 種
+【input 離散的值，output 離散的值】
+*
+*
+*
+*/
+
+//======== scaleBand ========//
+/**
+ * 用來繪製 bar chart 很方便，可以用 bandwidth 拿到每個數組的間距
+ */
+{
+  const data = [
+    { day: 'Mon', value: 10 },
+    { day: 'Tue', value: 40 },
+    { day: 'Wed', value: 30 },
+    { day: 'Thu', value: 60 },
+    { day: 'Fri', value: 30 }
+  ]
+
+  const bandScale = d3.scaleBand()
+    .domain(['Mon', 'Tue', 'Wed', 'Thu', 'Fri'])
+    .range([0, 200])
+    .paddingInner(0.05)
+
+  d3.select('.test9 svg g')
+    .selectAll('rect')
+    .data(data)
+    .join('rect')
+    .attr('y', (d) => bandScale(d.day))
+    .attr('width', (d) => d.value)
+    .attr('height', bandScale.bandwidth())
+    .attr('fill', 'orange')
+}
+//======== scaleBand ========//
+
+
+
+//======== scalePoint ========//
+{
+  const data = [
+    { day: 'Mon', value: 10 },
+    { day: 'Tue', value: 40 },
+    { day: 'Wed', value: 30 },
+    { day: 'Thu', value: 60 },
+    { day: 'Fri', value: 30 }
+  ]
+
+  const pointScale = d3.scalePoint()
+    .domain(['Mon', 'Tue', 'Wed', 'Thu', 'Fri'])
+    .range([0, 500])
+
+  console.log(pointScale.step()) // 可以透過 step 拿到間距
+  pointScale.padding(1); // 這裡 1 的概念是指 1份 step
+
+  d3.select('.test10 svg g')
+    .selectAll('circle')
+    .data(data)
+    .join('circle')
+    .attr('cx', (d) => pointScale(d.day))
+    .attr('fill', 'orange')
+    .attr('r', 4)
+}
+//======== scalePoint ========//
