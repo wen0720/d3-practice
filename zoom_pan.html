@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>zoom_pan</title>
+  <style>
+    .box {
+      margin: 100px 0;
+      border: 1px solid #eee;
+      border-width: 1px 0 1px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="box test1">
+    <svg width="600" height="400">
+      <g></g>
+    </svg>
+    <button onclick="scaleByOnButton()">放大2倍</button>
+    <button onclick="translateByOnButton()">移動 x: 20, y: 20</button>
+  </div>
+  <script type="module" src="./js/zoom_pan.js"></script>
+</body>
+</html>
